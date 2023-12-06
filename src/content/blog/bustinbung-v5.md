@@ -27,5 +27,3 @@ export const postSchema = z.object({
     isDraft: z.boolean().optional(),
 })`
 } lang={"tsx"}/>
-
-
