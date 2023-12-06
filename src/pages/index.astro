@@ -1,18 +1,33 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Granim from "@components/Granim.astro";
 ---
 
-<BaseLayout pageTitle="/">
-    <h2 class="center">justin jung // a student of media and music</h2><br>
-    <p class="center">hi there, and welcome to my site!</p>
+<BaseLayout pageTitle="home">
+  <Granim />
+  <div class='home-wrapper'>
+    <h1>hi, i'm justin.</h1>
+    <h5>I turn water into films, code, and music.</h5>
+  </div>
 </BaseLayout>
 
 <style>
-    .center {
-        text-align: center;
-    }
-    
-    h2 {
-        text-decoration: none; 
-    }
+  h1 {
+    font-size: 3rem;
+  }
+
+  h5 {
+    color: var(--highlight-color);
+  }
+
+  h1, h5 {
+    text-align: center;
+  }
+
+  .home-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
 </style>

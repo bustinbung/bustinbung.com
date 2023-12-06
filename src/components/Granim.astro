@@ -1,0 +1,47 @@
+<canvas id="granim-canvas"></canvas> 
+
+<script>
+  import Granim from "granim";
+  const canvas = document.getElementById('granim-canvas') as HTMLCanvasElement;
+  const main = document.querySelector('main') as HTMLElement;
+
+  function resizeCanvas(canvas: HTMLCanvasElement, main: HTMLElement) {
+    canvas.height = main.clientHeight;
+    canvas.width = main.clientWidth;
+  }
+
+  window.onresize = () => {resizeCanvas(canvas, main)};
+
+  window.onload = () => {
+    resizeCanvas(canvas, main)
+
+    const granimInstance = new Granim({
+      element: "#granim-canvas",
+      name: "granim",
+      opacity: ["1", "1"],
+      states: {
+        "default-state": {
+          gradients: [
+            ["#8093F1", "#FDC5F5"],
+            ["#B388EB", "#72DDF7"],
+          ],
+          loop: true,
+        },
+      },
+      direction: 'diagonal',
+    });
+
+    const rect = main.getBoundingClientRect();
+
+    canvas.style.top = `${rect.top + 1}px`
+    canvas.style.left = `${rect.left + 1}px`;
+  };
+</script>
+
+<style>
+  canvas {
+    display: block;
+    z-index: -1;
+    position: absolute;
+  }
+</style>

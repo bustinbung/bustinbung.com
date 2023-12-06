@@ -2,83 +2,106 @@
 import { Image } from 'astro:assets';
 
 import BaseLayout from '@layouts/BaseLayout.astro';
+import Granim from '@components/Granim.astro';
 
 import headshot from '@assets/img/headshot.jpg';
 import resume from '@public/pdf/Jung_Justin_Resume - v5.pdf';
 
 const onlinePresence = [
     {
-        name: 'email',
+        icon: 'fa-solid fa-envelope',
         url: 'mailto:justin@bustinbung.com'
     },
     {
-        name: 'github',
+        icon: 'github',
         url: 'https://github.com/bustinbung'
     },
     {
-        name: 'linkedin',
+        icon: 'linkedin',
         url: 'https://linkedin.com/in/bustinbung'
     },
     {
-        name: 'instagram',
+        icon: 'instagram',
         url: 'https://instagram.com/bustinbung'
     },
     {
-        name: 'twitter/x',
+        icon: 'twitter/x',
         url: 'https://twitter.com/bustinbung'
     },
     {
-        name: 'snapchat',
+        icon: 'snapchat',
         url: 'https://t.snapchat.com/kR0XK2AW'
     },
     {
-        name: 'youtube',
+        icon: 'youtube',
         url: 'https://www.youtube.com/@bustinbung'
     },
     {
-        name: 'spotify',
+        icon: 'spotify',
         url: 'https://open.spotify.com/user/31ww575syjxqf7h653q36evvbgeu?si=b48408449b544942'
     }
 ]
 ---
 
-<BaseLayout pageTitle="/about">
-    <h2>about</h2>
+<BaseLayout pageTitle="about">
+    <h2 class="page-header">about</h2>
 
     <Image src={headshot} alt="Justin's headshot" height=248 />
 
-    <p>Justin Jung (he/they/she) is a second-year student at the University of Georgia pursuing a Bachelor of Arts in Entertainment and Media Studies with a certificate in New Media and a minor in Music.</p>
-     
-    <p>Justin is an Eagle Scout, Zell Miller Scholar, and recipient of the Patrick S. Gilmore Band Award.</p>
-     
-    <p>Post-graduation, Justin hopes to work in the film and media industry in either production or post-production to help share people's stories with a wider audience. If you'd like to see some of their work, feel free to browse their projects using the navigation bar above.</p>
-    
-    <p>In their free time, Justin enjoys playing video games, reading, listening to music, and getting bubble tea.</p>
-    
+    <p>Hi, I'm Justin Jung! I'm currently a second-year student at the University of Georgia pursuing a Bachelor of Arts in Entertainment Media Studies with a certificate in New Media and a minor in Music.</p>
+
+    <p>I work primarily as a video editor and motion graphics designer, but do have experience operating cameras and editing sound. I love visual storytelling, and hope I can pursue a career sharing the diverse stories and perspectives of the people around me.</p>
+
+    <p>In my free time, I like to play video games, read, listen to music, and get bubble tea.</p>
+
+    <p>If you'd like to get in touch, feel free to get in contact with me through any of the channels below. Thanks!</p>
+
     <p>Download Justin's resume here: <a href=`${resume}`>(Jung_Justin_Resume - v5.pdf)</a></p>
     
     <hr>
     
     <h2>online presence:</h2>
-    <ul>
-        {onlinePresence.map(item => <li><a href={item.url} target="_blank">{item.name}</a></li>)}
+    <ul class="unstyled-list">
+        {onlinePresence.map(item => 
+            <li>
+                <a href={item.url} target="_blank" class="icon-link">
+                    <i class={item.icon}/>
+                </a>
+            </li>
+        )}
     </ul>
 
-    <style>
-        img[alt="Justin's headshot"] {
-            margin-right: 10px;
-            float: left;
-        }
     
-        hr {
-            border-top: var(--border) !important;
-        }
-    
-        hr:before {
-            content: none !important;
-        }
-        hr:after {
-            content: none !important;
-        }
-    </style>
 </BaseLayout>
+
+<style>
+    .page-header {
+        margin-top: 0;
+        line-height: normal;
+    }
+
+    .icon-link:hover {
+        color: var(--base-color);
+        background-color: var(--background-color);
+    }
+
+    .icon-link>i:hover {
+        color: var(--background-color);
+    }
+
+    img[alt="Justin's headshot"] {
+        margin-right: 10px;
+        float: left;
+    }
+
+    hr {
+        border-top: var(--border) !important;
+    }
+
+    hr:before {
+        content: none !important;
+    }
+    hr:after {
+        content: none !important;
+    }
+</style>

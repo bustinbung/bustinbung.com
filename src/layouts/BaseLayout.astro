@@ -1,7 +1,6 @@
 ---
 interface Props {
     pageTitle: string,
-    isPost?: boolean
 }
 
 import Analytics from '@components/Analytics.astro';
@@ -10,8 +9,8 @@ import Footer from '@components/Footer.astro';
 
 import '@styles/global.scss'
 
+const { pageTitle } = Astro.props;
 const isProd = import.meta.env.PROD;
-const { pageTitle, isPost } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,10 +19,8 @@ const { pageTitle, isPost } = Astro.props;
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="generator" content={Astro.generator} />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-        <title>{!isPost && "bustinbung"}{pageTitle}</title>
+        <script src="https://kit.fontawesome.com/578016c09a.js" crossorigin="anonymous"></script>
+        <title>{pageTitle}</title>
     
         {isProd && <Analytics domainCode="bustinbung"/>}
     </head>
@@ -32,14 +29,9 @@ const { pageTitle, isPost } = Astro.props;
         <Header />
 
         <main class="page-content" aria-label="content">
-            <div class="wrapper">
-                <slot />
-            </div>
+            <slot />
         </main>
 
-        <Footer 
-            email="justin@bustinbung.com"
-            githubUsername="bustinbung"
-            versionString="v5.0.3"/>
-	</body>
+        <Footer />
+    </body>
 </html>
