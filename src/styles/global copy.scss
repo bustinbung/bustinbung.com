@@ -1,25 +1,14 @@
 @charset "utf-8";
-
-:root {
-    --base-color: black;
-    --highlight-color: #888;
-    --blockquote-color: #DDD;
-    --border: solid 1px black;
-    --selection-background: black;
-    --selection-text: white;
-    --background-color: white;
-    --text-color: var(--base-color);
-    --placeholder-color: var(--base-color);
-    --link-color: var(--base-color);
-}
+@import '_light';
 
 // variables
 $base-font-family: 'IvyPresto Text', serif !default;
-$header-font-family: 'Helvetica Neue', sans-serif !default;
-$headline-font-family: 'IvyPresto Headline', serif !default;
-$code-font-family: 'FiraCode Nerd Font', monospace !default;
+$base-header-font-family: 'Helvetica Neue', sans-serif !default;
 $base-font-size: large !default;
+$mobile-font-size: large !default;
 $base-line-height: 1.5 !default;
+$container-width: 90% !default;
+$container-max-width: 700px !default;
 
 // text styling
 html {
@@ -28,67 +17,45 @@ html {
     font-family: $base-font-family;
 
     @media only screen and (max-width: 500px) {
-        font-size: $base-font-size;
+        font-size: $mobile-font-size
     }
 }
 
 body {
     background-color: var(--background-color);
-    margin: 0px;
+    margin: 0 auto;
     padding: 0;
     color: var(--text-color);
     text-align: left;
     line-height: $base-line-height !important;
 }
 
-h1,
-h2,
-h3 {
+h1, h2, h3, h4, h5, h6 {
     margin: 0px;
-    margin-top: 15px;
-    font-family: $header-font-family;
+    font-family: $base-header-font-family;
     font-weight: bold;
     color: var(--text-color);
-    line-height: 1;
 }
 
-h4,
-h5,
-h6 {
-    margin: 0px;
-    margin-top: 10px;
-    font-family: $headline-font-family;
-    font-weight: normal;
-    color: var(--text-color)
+h1, h2, h3 {
+    margin-top: 22px;
 }
 
 h1 {
-    font-size: 2.5rem;
-}
-
-h2 {
     font-size: 2rem;
 }
 
+h2 {
+    font-weight: 800;
+    font-size: 1.4rem;
+}
+
 h3 {
-    font-size: 1.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
-h4 {
-    font-size: 1.6rem;
-}
-
-h5 {
-    font-size: 1.3rem;
-}
-
-h6 {
-    font-size: 1rem;
-}
-
-p,
-ul,
-ol {
+p, ul, ol {
     margin: 0px;
     color: var(--text-color);
 }
@@ -96,7 +63,6 @@ ol {
 a {
     text-decoration: underline;
     color: var(--link-color);
-    transition: color 0.25s, background-color 0.25s;
 
     &:hover {
         color: var(--background-color);
@@ -104,30 +70,12 @@ a {
     }
 }
 
-code {
-    font-family: $code-font-family;
-    font-size: 16px;
-}
-
 // layout
-html {
-    height: 100%;
-}
-
 body {
-    width: 100%;
-    height: 100%;
+    width: $container-width;
+    max-width: $container-max-width;
     margin-right: auto;
     margin-left: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    margin: 30px;
-    padding: 30px;
-    flex-grow: 1;
-    border: var(--border);
 }
 
 p {
@@ -139,58 +87,64 @@ p {
 
 hr {
     text-align: center;
-    border: none;
-    border-top: var(--border);
-    margin-block: 15px;
-}
+    border: 0;
 
-img {
-    max-width: 100%;
-}
+    &:before {
+        content: '//////////////////';
+    }
 
-blockquote {
-    padding: 8px 8px 8px 20px;
-    margin-inline: 0px;
-    background-color: var(--blockquote-color);
-    border-left: 5px solid #999;
+    &:after {
+        content: attr(data-content) '//////////////////';
+    }
 }
 
 header {
-    flex-shrink: 0;
-    border-bottom: var(--border);
-    display: flex;
-    justify-content: center;
-    height: 50px;
-    font-family: $header-font-family;
+    margin-top: 25px;
+    margin-bottom: 20px;
 
-    ul {
-        display: flex;
-        align-items: center;
-        gap: 80px;
-    }
-
-    ul>li {
-        display: inline;
+    p {
+        text-align: left;
+        margin: 0;
     }
 }
 
 footer {
-    flex-shrink: 0;
+    color: var(--text-color);
     border-top: var(--border);
-    display: flex;
-    justify-content: center;
-    height: 50px;
-    font-family: $header-font-family;
-    font-size: medium;
-    width: 100%;
+    margin: 20px auto 15px;
+    padding-top: 10px;
 
-    .unstyled-list {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding-inline: 30px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    margin-bottom: 2rem;
+
+    .box {
+        min-width: 250px;
+        width: 45%;
     }
+
+    .left {
+        text-align: left;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    @media only screen and (max-device-width: 500px) {
+        flex-direction: column;
+
+        .box {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+img {
+    max-width: $container-max-width
 }
 
 // highlight, markup
@@ -206,16 +160,21 @@ footer {
 
 // list styling
 ul {
-    list-style: "—  " outside;
-}
-
-.unstyled-list {
     list-style: none;
+    list-style-type: none;
     padding-left: 0;
+
+    >li:before {
+        content: "-";
+        margin-right: 9px;
+    }
 }
 
 .unstyled-list>li {
-    list-style: none;
+    &:before {
+        content: none;
+        margin-right: 0;
+    }
 
     a {
         text-decoration: none;
@@ -230,6 +189,26 @@ ul {
 }
 
 // nav menu
+.menu {
+    border-top: var(--border);
+    border-bottom: var(--border);
+
+    ul {
+        margin-top: 12px;
+        margin-bottom: 12px;
+        padding-left: 0px;
+        text-align: right;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: end;
+    }
+
+    ul>li {
+        display: inline;
+        margin-left: 10px;
+    }
+}
+
 // form
 input,
 select,
@@ -300,17 +279,14 @@ textarea {
 
 // code and syntax highlighting
 code {
-    padding: 3px 3px;
+    padding: 3px 5px;
     border-radius: 4px;
-    background-color: var(--blockquote-color);
 }
 
-.astro-code {
-    border-radius: 4px;
-    padding: 8px;
+code > span:nth-child(1) {
+    padding: 3px 0px;
 }
 
-.astro-code>code {
-    background-color: revert;
-    padding: revert;
+code > span {
+    padding: 3px 5px;
 }

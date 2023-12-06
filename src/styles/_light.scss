@@ -1,0 +1,14 @@
+/**
+ * Light theme variables
+ */
+
+:root {
+	--base-color: black;
+	--border: solid 1px black;
+	--selection-background: black;
+	--selection-text: white;
+	--background-color: white;
+	--text-color: var(--base-color);
+	--placeholder-color: var(--base-color);
+	--link-color: var(--base-color);
+}
