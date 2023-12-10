@@ -5,7 +5,6 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Granim from '@components/Granim.astro';
 
 import headshot from '@assets/img/headshot.jpg';
-import resume from '@public/pdf/Jung_Justin_Resume - v5.pdf';
 
 const onlinePresence = [
     {
@@ -13,51 +12,45 @@ const onlinePresence = [
         url: 'mailto:justin@bustinbung.com'
     },
     {
-        icon: 'github',
+        icon: 'fa-brands fa-github',
         url: 'https://github.com/bustinbung'
     },
     {
-        icon: 'linkedin',
+        icon: 'fa-brands fa-linkedin',
         url: 'https://linkedin.com/in/bustinbung'
     },
     {
-        icon: 'instagram',
+        icon: 'fa-brands fa-square-instagram',
         url: 'https://instagram.com/bustinbung'
     },
     {
-        icon: 'twitter/x',
+        icon: 'fa-brands fa-twitter',
         url: 'https://twitter.com/bustinbung'
     },
     {
-        icon: 'snapchat',
-        url: 'https://t.snapchat.com/kR0XK2AW'
-    },
-    {
-        icon: 'youtube',
+        icon: 'fa-brands fa-youtube',
         url: 'https://www.youtube.com/@bustinbung'
     },
     {
-        icon: 'spotify',
+        icon: 'fa-brands fa-spotify',
         url: 'https://open.spotify.com/user/31ww575syjxqf7h653q36evvbgeu?si=b48408449b544942'
     }
 ]
 ---
 
 <BaseLayout pageTitle="about">
-    <h2 class="page-header">about</h2>
+    <h1 class="page-header">about</h2>
 
     <Image src={headshot} alt="Justin's headshot" height=248 />
 
-    <p>Hi, I'm Justin Jung! I'm currently a second-year student at the University of Georgia pursuing a Bachelor of Arts in Entertainment Media Studies with a certificate in New Media and a minor in Music.</p>
+    <p>Hi, I'm Justin Jung! I'm a second-year student at the University of Georgia pursuing a Bachelor of Arts in Entertainment and Media Studies with a certificate in New Media and a minor in Music.</p>
 
-    <p>I work primarily as a video editor and motion graphics designer, but do have experience operating cameras and editing sound. I love visual storytelling, and hope I can pursue a career sharing the diverse stories and perspectives of the people around me.</p>
+    <p>I work primarily as a video editor and motion graphics designer, but also have experience operating cameras and editing sound. I love visual storytelling, and hope I can pursue a career sharing the diverse stories and perspectives of the people around me.</p>
 
     <p>In my free time, I like to play video games, read, listen to music, and get bubble tea.</p>
 
     <p>If you'd like to get in touch, feel free to get in contact with me through any of the channels below. Thanks!</p>
 
-    <p>Download Justin's resume here: <a href=`${resume}`>(Jung_Justin_Resume - v5.pdf)</a></p>
-    
     <hr>
     
     <h2>online presence:</h2>
@@ -75,18 +68,14 @@ const onlinePresence = [
 </BaseLayout>
 
 <style>
-    .page-header {
-        margin-top: 0;
-        line-height: normal;
+   .unstyled-list {
+        display: inline-flex;
+        justify-content: center;
     }
 
-    .icon-link:hover {
-        color: var(--base-color);
-        background-color: var(--background-color);
-    }
-
-    .icon-link>i:hover {
-        color: var(--background-color);
+    i {
+        padding-inline: 5px;
+        font-size: 20px;
     }
 
     img[alt="Justin's headshot"] {
