@@ -69,11 +69,13 @@ import rand_work from '../../assets/img/blog/redesign/rand-work.jpg';
 
 ## Designing
 
-I did all of my designing work in [Figma](https://figma.com).
+One of my main design goals with this new site was to design for mobile first, then expand to tablet and desktop. This paradigm has been termed "mobile-first design," and it has lots of benefits on both the design and development side.
 
-To avoid the pitfalls that came from designing desktop first and then squeezing it down for mobile, I worked on the mobile version first.
+On the design side, it allows you to start with simpler designs that work well on mobile and increase complexity as the screen size stretches. In this way, even if the mobile version is potentially missing design elements or features of the desktop layout, the design looks intentional.
 
-I made extensive use of Figma's auto layout to simulate CSS flexboxes, and designing this way helped me avoid some design decisions that would have been...painful to actually implement.
+On the development side, it's much easier to take a layout and stretch it than it is to take a layout and shrink it. Developing mobile-first allows you to, again, add complexity as the codebase expands.
+
+I also made extensive use of Figma's auto layout to simulate CSS flexboxes, and designing this way helped me avoid some design decisions that would have been...painful to actually implement.
 
 import painful_mobile from '../../assets/img/blog/redesign/painful-mobile.jpg';
 
@@ -91,11 +93,16 @@ import design_versions from '../../assets/img/blog/redesign/design-versions.webp
     alt="An animated image showing the progress of the design over time."
     caption="Design over time" />
 
-All in all, the total design process (according to Figma version history tracking) took 20 days.
+All in all, the total design process took about 20 days.
 
 ## Development
 
-Developing the website, in all, took about a month. I worked in [Astro](https://astro.build), a JavaScript framework and static site generator (SSG). I could have used another SSG like [11ty](https://www.11ty.dev/) or [Hugo](https://gohugo.io/), but Astro is popular and I heard good things about the developer experience.
+Developing the website took about a month. I worked in [Astro](https://astro.build), a JavaScript framework and static site generator (SSG). I could have used another SSG like [11ty](https://www.11ty.dev/) or [Hugo](https://gohugo.io/), but Astro is popular and I heard good things about the developer experience.
+
+### How Astro Works
+
+{/* TODO: Add link */}
+> If you already know how Astro functions, skip this section by clicking here.
 
 For those who don't understand how Astro works, sites are built using [components](https://docs.astro.build/en/basics/astro-components/): reusable UI elements that are encapsulated in a single file. You might have a group of buttons for example:
 
@@ -111,7 +118,9 @@ For those who don't understand how Astro works, sites are built using [component
 This is fine, but what if you want to reuse this button group somewhere else? Instead of copying and pasting the code (and having to update every instance if you change something), you could create a component and reuse the component throughout your UI.
 
 ```astro
-<!-- ButtonGroup.astro -->
+---
+// ButtonGroup.astro
+---
 <div>
     <button>Button 1</button>
     <button>Button 2</button>
@@ -121,12 +130,101 @@ This is fine, but what if you want to reuse this button group somewhere else? In
 ```
 
 ```astro
-<!-- index.astro -->
+---
+// index.astro
+import ButtonGroup from '@components/ButtonGroup.astro';
+---
+
 <ButtonGroup />
 <ButtonGroup />
 ```
 
-My site is built on the 
+This way, any changes to `ButtonGroup.astro` immediately propagate to every instance of the component on the site.
+
+This also allows you to scope styles at the component level, so any styles applied to `ButtonGroup.astro` don't apply to `index.astro`.
+
+```astro
+---
+// ButtonGroup.astro
+---
+...
+
+<style>
+    * {
+        text-color: red;
+    }
+</style>
+```
+
+```astro
+---
+// index.astro
+---
+...
+
+<ButtonGroup />
+<p>This text will not be red.</p>
+```
+
+### On This Site
+
+I used Astro components heavily on this site, for reusable UI components and for layouts.
+
+Commonly reused code snippets like date strings (and their formatting), images, and the navbar are components that are reused across pages.
+
+```astro
+---
+// Date.astro
+interface Props {
+    date: Date,
+    formatString?: string,
+    appendString?: string
+}
+
+import { format } from 'date-fns';
+import { tz } from '@date-fns/tz';
+
+const { date, formatString = "yyyy/MM/dd", appendString } = Astro.props;
+const formattedDate = format(date, formatString, { in: tz("UTC")});
+---
+<p class="date">{formattedDate}{appendString && ` ${appendString}`}</p>
+
+<style lang="scss">
+    .date {
+        margin-block: 0;
+        margin-top: calc(var(--global-padding) / 8);
+        color: var(--secondary-color);
+        font-style: italic;
+    }
+</style>
+```
+
+Every page is based on the `ContentPage` layout which is based on the `Page` layout (except the home page, which is based on `Page`). The `ContentPage` layout provides the basic layout, including semantic HTML elements, a navbar, proper `<head>` content, and so on.
+
+```astro
+---
+import ContentPage from "@layouts/ContentPage.astro";
+---
+
+<ContentPage>
+    <!-- Page content here -->
+</ContentPage>
+
+<script>
+    // Any page-specific scripts
+</script>
+
+<style>
+    /* Any page-specific styles */
+</style>
+```
+
+### Developing Across Screens
+
+You'll notice that there are very few absolute sizing units present. For the most part, sizes are set using `rem` or by calculating against the `global-padding` CSS variable (which is itself set using `rem`). This means that when creating styles, it's easy to adjust the "scale" of the site by setting `font-size` on `html` (thereby changing the values for `rem`).
+
+
+
 ---
 
 
