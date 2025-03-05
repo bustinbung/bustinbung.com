@@ -48,6 +48,7 @@ posts.sort((a, b) => {
     .post {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         outline: var(--outline);
         padding: var(--global-padding);
     }
@@ -70,6 +71,10 @@ posts.sort((a, b) => {
     h2 {
         margin-block: 0;
         font-size: 1.6rem;
+    }
+
+    a {
+        display: flex;
     }
 
     @media (min-width: 768px) {
