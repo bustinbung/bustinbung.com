@@ -2,9 +2,10 @@
 import Page from "@layouts/Page.astro";
 import NavbarDesktop from "@components/ui/NavbarDesktop.astro";
 import Navbar from "@components/ui/Navbar.astro";
-import { Image } from "astro:assets";
+import Video from "@components/ui/Video.astro";
 
-import reelImg from "@assets/img/placeholder-16-9.jpg";
+import reel from "@assets/video/justin_jung-reel-2025.mp4";
+import reelThumb from "@assets/video/justin_jung-reel-2025_thumb.jpg";
 ---
 <Page title="Home">
     <div class="page">
@@ -15,7 +16,7 @@ import reelImg from "@assets/img/placeholder-16-9.jpg";
                     <p>student. filmmaker.<br>developer. musician.</p>
                 </header>
                 <div class="reel">
-                    <Image src={reelImg} alt="Justin's reel." loading="eager"/>
+                    <Video mp4Source={reel} thumbnail={reelThumb.src}/>
                 </div>
             </div>
         </main>
@@ -64,6 +65,7 @@ import reelImg from "@assets/img/placeholder-16-9.jpg";
     .reel {
         outline: var(--outline);
         display: flex;
+        aspect-ratio: 16 / 9;
     }
 
     @media (min-width: 768px) {

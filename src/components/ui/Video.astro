@@ -14,3 +14,10 @@ const { mp4Source, webmSource, thumbnail } = Astro.props;
     <p>Your browser does not support the &lt;video&gt; tag.</p>
     <p><a href={mp4Source ? mp4Source : webmSource}>Download Video</a></p>
 </video>
+
+<style lang="scss">
+    video {
+        width: 100%;
+        height: auto;
+    }
+</style>
