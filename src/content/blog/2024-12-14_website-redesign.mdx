@@ -1,0 +1,251 @@
+---
+title: "v6 Redesign"
+description: "How I designed and developed a brand new version of my website."
+date: 2024-12-14
+isDraft: true
+---
+import Figure from '@components/ui/Figure.astro';
+
+## Starting Out
+
+I knew my website was due for a redesign. The old version of the site was using a design held over from the days when I wanted to be a computer science major, and the look reflects that. It was never really built to showcase media, and it looked **really** bad on mobile devices as it was built for desktop first.
+
+import old_site_home from '@assets/img/blog/redesign/old-site-home.png';
+
+<Figure
+    src={old_site_home}
+    alt="A screenshot of the old site"
+    caption="The old site's homepage" />
+
+import old_site_home_mobile from '@assets/img/blog/redesign/old-site-home-mobile.png';
+
+<Figure
+    src={old_site_home_mobile}
+    alt="A screenshot of the old site on mobile"
+    caption="The old site on mobile. Look at that footer!" />
+
+## Drawing Inspiration
+
+I've always been a fan of minimal, geometric designs.
+
+[Teenage Engineering](https://teenage.engineering/)'s designs have always been some of my favorites. Their designs always look and feel playful and elegant while still being functional.
+
+import op_1 from '@assets/img/blog/redesign/op-1.png';
+
+<Figure
+    src={op_1}
+    alt="Teenage Engineering's OP-1 synthesizer" />
+
+I love the aesthetic of the [Anytype](https://anytype.io) website.[^1] The clean, thin grids, the Macintosh System 1 inspired icons and graphics, and the little splashes of color all blend together well.
+
+import anytype_home from '@assets/img/blog/redesign/anytype-home.png';
+
+<Figure
+    src={anytype_home}
+    alt="A screenshot of the Anytype homepage"
+    caption="Anytype's homepage" />
+
+As it turns out, this style of design has a name: Swiss Style.
+
+### Swiss Style
+
+"[Swiss Style](https://en.wikipedia.org/wiki/Swiss_Style_(design))" is a graphic design trend that centers (broadly) around grids, sans-serif fonts, and asymmetrical designs.[^2]
+
+Josef Müller-Brockmann was an influential Swiss style designer, helping spread Swiss style beyond Europe.[^3]
+
+import josef_work from '../../assets/img/blog/redesign/josef-work.jpg';
+
+<Figure 
+    src={josef_work}
+    alt="Some samples of Josef Müller-Brockmann's work"/>
+
+You might be familiar with American designer Paul Rand, known for his work on iconic logos like ABC and IBM. He was one of the first American designers to embrace Swiss style in his work.[^4][^5]
+
+import rand_work from '../../assets/img/blog/redesign/rand-work.jpg';
+
+<Figure 
+    src={rand_work}
+    alt="Some samples of Paul Rand's work"/>
+
+## Designing
+
+One of my main design goals with this new site was to design for mobile first, then expand to tablet and desktop. This paradigm has been termed "mobile-first design," and it has lots of benefits on both the design and development side.
+
+On the design side, it allows you to start with simpler designs that work well on mobile and increase complexity as the screen size stretches. In this way, even if the mobile version is potentially missing design elements or features of the desktop layout, the design looks intentional.
+
+On the development side, it's much easier to take a layout and stretch it than it is to take a layout and shrink it. Developing mobile-first allows you to, again, add complexity as the codebase expands.
+
+I also made extensive use of Figma's auto layout to simulate CSS flexboxes, and designing this way helped me avoid some design decisions that would have been...painful to actually implement.
+
+import painful_mobile from '../../assets/img/blog/redesign/painful-mobile.jpg';
+
+<Figure 
+    src={painful_mobile}
+    alt="A screenshot of the first iteration of the design. The header text is centered on the border."
+    caption="Not sure how I'd recreate this header design" />
+
+Nevertheless, work was steady, and I'm pleased with the result.
+
+import design_versions from '../../assets/img/blog/redesign/design-versions.webp';
+
+<Figure 
+    src={design_versions}
+    alt="An animated image showing the progress of the design over time."
+    caption="Design over time" />
+
+All in all, the total design process took about 20 days.
+
+## Development
+
+Developing the website took about a month. I worked in [Astro](https://astro.build), a JavaScript framework and static site generator (SSG). I could have used another SSG like [11ty](https://www.11ty.dev/) or [Hugo](https://gohugo.io/), but Astro is popular and I heard good things about the developer experience.
+
+### How Astro Works
+
+{/* TODO: Add link */}
+> If you already know how Astro functions, skip this section by clicking here.
+
+For those who don't understand how Astro works, sites are built using [components](https://docs.astro.build/en/basics/astro-components/): reusable UI elements that are encapsulated in a single file. You might have a group of buttons for example:
+
+```html
+<div>
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+    <button>Button 4</button>
+</div>
+```
+
+This is fine, but what if you want to reuse this button group somewhere else? Instead of copying and pasting the code (and having to update every instance if you change something), you could create a component and reuse the component throughout your UI.
+
+```astro
+---
+// ButtonGroup.astro
+---
+<div>
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+    <button>Button 4</button>
+</div>
+```
+
+```astro
+---
+// index.astro
+import ButtonGroup from '@components/ButtonGroup.astro';
+---
+
+<ButtonGroup />
+<ButtonGroup />
+```
+
+This way, any changes to `ButtonGroup.astro` immediately propagate to every instance of the component on the site.
+
+This also allows you to scope styles at the component level, so any styles applied to `ButtonGroup.astro` don't apply to `index.astro`.
+
+```astro
+---
+// ButtonGroup.astro
+---
+...
+
+<style>
+    * {
+        text-color: red;
+    }
+</style>
+```
+
+```astro
+---
+// index.astro
+---
+...
+
+<ButtonGroup />
+<p>This text will not be red.</p>
+```
+
+### On This Site
+
+I used Astro components heavily on this site, for reusable UI components and for layouts.
+
+Commonly reused code snippets like date strings (and their formatting), images, and the navbar are components that are reused across pages.
+
+```astro
+---
+// Date.astro
+interface Props {
+    date: Date,
+    formatString?: string,
+    appendString?: string
+}
+
+import { format } from 'date-fns';
+import { tz } from '@date-fns/tz';
+
+const { date, formatString = "yyyy/MM/dd", appendString } = Astro.props;
+const formattedDate = format(date, formatString, { in: tz("UTC")});
+---
+<p class="date">{formattedDate}{appendString && ` ${appendString}`}</p>
+
+<style lang="scss">
+    .date {
+        margin-block: 0;
+        margin-top: calc(var(--global-padding) / 8);
+        color: var(--secondary-color);
+        font-style: italic;
+    }
+</style>
+```
+
+Every page is based on the `ContentPage` layout which is based on the `Page` layout (except the home page, which is based on `Page`). The `ContentPage` layout provides the basic layout, including semantic HTML elements, a navbar, proper `<head>` content, and so on.
+
+```astro
+---
+import ContentPage from "@layouts/ContentPage.astro";
+---
+
+<ContentPage>
+    <!-- Page content here -->
+</ContentPage>
+
+<script>
+    // Any page-specific scripts
+</script>
+
+<style>
+    /* Any page-specific styles */
+</style>
+```
+
+### Developing Across Screens
+
+You'll notice that there are very few absolute sizing units present. For the most part, sizes are set using `rem` or by calculating against the `global-padding` CSS variable (which is itself set using `rem`). This means that when creating styles, it's easy to adjust the "scale" of the site by setting `font-size` on `html` (thereby changing the values for `rem`).
+
+
+
+---
+
+
+[^1]: Anytype is a pretty great free and open-source Notion alternative with a focus on privacy and decentralized sync. It's got a super deep typing and relations system that's a bit hard to wrap your head around the first time, but it's a really incredible piece of software.
+[^2]: For more, check out the [Wikipedia article](https://en.wikipedia.org/wiki/Swiss_Style_(design)).
+[^3]: https://www.printmag.com/featured/swiss-style-principles-typefaces-designers/
+[^4]: https://www.paulrand.design/
+[^5]: https://www.britannica.com/biography/Paul-Rand
+
+{/* - Inspired by Swiss style design
+    - Anytype & Teenage Engineering
+- Designed in Figma
+- Challenges with font selection
+    - Not enough styles for Mori
+    - Incorporating elements of swiss style
+    - Screenshots of versions
+- Design goals
+    - Showcase work & depth of personality
+    - Minimal, clean
+    - Maybe showcase previous 6.0 iteration?
+
+- Development
+    - Link to commits
+    - Designing mobile-first */}

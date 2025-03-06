@@ -1,18 +1,111 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import Page from "@layouts/Page.astro";
+import NavbarDesktop from "@components/ui/NavbarDesktop.astro";
+import Navbar from "@components/ui/Navbar.astro";
+import Video from "@components/ui/Video.astro";
+
+import reelThumb from "@assets/video/justin_jung-reel-2025_thumb.jpg";
 ---
+<Page title="Home">
+    <div class="page">
+        <main>
+            <div class="content">
+                <header>
+                    <h1>hi, i’m justin.</h1>
+                    <p>student. filmmaker.<br>developer. musician.</p>
+                </header>
+                <div class="reel">
+                    <Video mp4Source="https://cloud.bustinbung.com/s/isq72rXq8MCAqZ7/download/justin_jung-reel-2025.mp4" thumbnail={reelThumb.src}/>
+                </div>
+            </div>
+        </main>
+        <Navbar />
+        <NavbarDesktop />
+    </div>
+</Page>
 
-<BaseLayout pageTitle="/">
-    <h2 class="center">justin jung // a student of media and music</h2><br>
-    <p class="center">hi there, and welcome to my site!</p>
-</BaseLayout>
+<style lang="scss">
+    main {
+        display: flex;
+        height: 100%;
+        gap: 1px;
+    }
 
-<style>
-    .center {
-        text-align: center;
+    .page {
+        justify-content: space-between;
+    }
+
+    .content {
+        justify-content: center;
+        align-items: normal;
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        box-sizing: content-box;
+    }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    p {
+        font-family: var(--serif-font);
+        font-weight: normal;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+        margin-block: 0;
     }
     
-    h2 {
-        text-decoration: none; 
+    .reel {
+        outline: var(--outline);
+        display: flex;
+        aspect-ratio: 16 / 9;
+    }
+
+    @media (min-width: 768px) {
+        main {
+            align-items: center;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 1.4rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .page {
+            justify-content: center;
+        }
+
+        main {
+            height: auto;
+        }
+
+        h1 {
+            font-size: 4rem;
+        }
+
+        p {
+            font-size: 1.6rem;
+        }
+
+        :global(.nav-item) {
+            font-size: 1.4rem !important;
+            padding-block: var(--global-padding) !important;
+        }
     }
 </style>

@@ -1,0 +1,53 @@
+<nav class="desktop">
+    <div class="nav-item">
+        <a href="/" aria-label="Home">home</a>
+    </div>
+    <div class="nav-item">
+        <a href="/about" aria-label="About">about</a>
+    </div>
+    <div class="nav-item" >
+        <a href="/work" aria-label="Work">work</a>
+    </div>
+    <div class="nav-item">
+        <a href="/blog" aria-label="Blog">blog</a>
+    </div>
+</nav>
+
+<style lang="scss">
+    nav {
+        display: none;
+        grid-template-columns: repeat(4, 1fr);
+        outline: var(--outline);
+        position: sticky;
+        background-color: var(--bg-color);
+        gap: 1px;
+    }
+
+    .nav-item {
+        outline: var(--outline);
+        font-size: 1.2rem;
+        padding-block: calc(var(--global-padding) / 1.25);
+        display: flex;
+        justify-content: center;
+        font-family: var(--sans-serif-font);
+        font-weight: 450;
+
+        a {
+            text-decoration: none;
+            transition: all 0.5s ease;
+            padding: 5px;
+
+            &:hover {
+                    background-color: var(--fg-color);
+                    color: var(--bg-color);
+            }
+        }
+
+    }
+
+    @media (min-width: 1024px) {
+        nav {
+            display: grid;
+        }
+    }
+</style>

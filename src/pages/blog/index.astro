@@ -1,13 +1,96 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import PostList from "@components/PostList.astro";
+import ContentPage from '@layouts/ContentPage.astro';
+import Date from '@components/ui/Date.astro';
+import { getCollection } from 'astro:content';
 
-const pageTitle = '/blog';
-const collectionName = pageTitle.slice(1);
+const posts = await getCollection('blog', ({data}) => {
+    if (import.meta.env.PROD && data.isDraft) {
+        return false;
+    } else {
+        return true;
+    }
+});
+
+posts.sort((a, b) => {
+    return b.data.date.getTime() - a.data.date.getTime();
+})
 ---
+<ContentPage title="Blog">
+    <div class="content">
+        {posts.map((post) => (
+            <div class="post" id={post.id}>
+                <div class="post-details">
+                    <header>
+                        <a href={`/blog/${post.id.split("_")[1]}`}>
+                            <h2>{post.data.title}</h2>
+                        </a>
+                        {post.data.updateDate ? 
+                        <Date date={post.data.updateDate} appendString='•' /> :
+                        <Date date={post.data.date} />}
+                    </header>
+                    <p class="description">{post.data.description}</p>
+                </div>
+                <div class="arrow">
+                    <a href={`/blog/${post.id}`} aria-label="Read more">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="0" y1="24" x2="24" y2="24"></line><line x1="24" y1="0" x2="24" y2="24"></line><line x1="24" y1="24" x2="0" y2="0" stroke-width="1"></line></svg>
+                    </a>
+                </div>
+            </div>
+        ))}
+    </div>
+</ContentPage>
 
-<BaseLayout {pageTitle}>
-    <h2>{pageTitle.slice(1)}</h2>
+<style lang="scss">
+    .content {
+        align-items: normal;
+    }
 
-    <PostList {collectionName}/>
-</BaseLayout>
+    .post {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        outline: var(--outline);
+        padding: var(--global-padding);
+    }
+
+    .description {
+        margin-top: var(--global-padding);
+    }
+    
+    .arrow {
+        margin-top: var(--global-padding);
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    header {
+        padding: 0;
+        outline: none;
+    }
+
+    h2 {
+        margin-block: 0;
+        font-size: 1.6rem;
+    }
+
+    a {
+        display: flex;
+    }
+
+    @media (min-width: 768px) {
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .content {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        
+        h2 {
+            font-size: 1.4rem;
+        }
+    }
+</style>

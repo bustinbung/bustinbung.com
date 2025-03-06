@@ -1,80 +1,203 @@
 ---
-import { Image } from 'astro:assets';
+import ContentPage from "@layouts/ContentPage.astro";
+import { Image } from "astro:assets";
 
-import BaseLayout from '@layouts/BaseLayout.astro';
-
-import headshot from '@assets/img/headshot.jpg';
-import resume from '@public/pdf/Jung_Justin_Resume - v5.pdf';
-
-const onlinePresence = [
-    {
-        name: 'email',
-        url: 'mailto:justin@bustinbung.com'
-    },
-    {
-        name: 'github',
-        url: 'https://github.com/bustinbung'
-    },
-    {
-        name: 'linkedin',
-        url: 'https://linkedin.com/in/bustinbung'
-    },
-    {
-        name: 'instagram',
-        url: 'https://instagram.com/bustinbung'
-    },
-    {
-        name: 'twitter/x',
-        url: 'https://twitter.com/bustinbung'
-    },
-    {
-        name: 'youtube',
-        url: 'https://www.youtube.com/@bustinbung'
-    },
-    {
-        name: 'spotify',
-        url: 'https://open.spotify.com/user/31ww575syjxqf7h653q36evvbgeu?si=b48408449b544942'
-    }
-]
+import headshotImg from '@assets/img/headshot.png';
 ---
+<ContentPage title="About">
+    <div class="content">
+        <Image src={headshotImg} alt="Justin's headshot" loading="eager"/>
+        <div class="about-text pad child-margin-fix">
+            <p>Justin Jung is a third-year student at the University of Georgia pursuing a Bachelor of Arts in Entertainment and Media Studies with a certificate in New Media and a minor in Music.</p>
 
-<BaseLayout pageTitle="/about">
-    <h2>about</h2>
+            <p>Justin has experience in pre-production, principal photography, and post-production, working primarily as an editor and cinematographer. He has worked in the narrative, documentary, corporate, and social media fields and is interested in pursuing new opportunities wherever they present themselves. In the future, he hopes to work as a cinematographer, editor, or colorist.</p>
 
-    <Image src={headshot} alt="Justin's headshot" height=248 />
+            <p>Justin is an Eagle Scout, Zell Miller Scholar, and recipient of the Patrick S. Gilmore Band Award.</p>
 
-    <p>Justin Jung is a second-year student at the University of Georgia pursuing a Bachelor of Arts in Entertainment and Media Studies with a certificate in New Media and a minor in Music.</p>
-     
-    <p>Justin is an Eagle Scout, Zell Miller Scholar, and recipient of the Patrick S. Gilmore Band Award.</p>
-     
-    <p>Post-graduation, Justin hopes to work in the film and media industry in either production or post-production to help share people's stories with a wider audience. If you'd like to see some of their work, feel free to browse their projects using the navigation bar above.</p>
-    
-    <p>In their free time, Justin enjoys playing video games, reading, listening to music, and getting bubble tea.</p>
-    
-    <p>Download Justin's resume here: <a href=`${resume}`>(Jung_Justin_Resume - v5.pdf)</a></p>
-    
-    <hr>
-    
-    <h2>online presence:</h2>
-    <ul>
-        {onlinePresence.map(item => <li><a href={item.url} target="_blank">{item.name}</a></li>)}
-    </ul>
+            <p>In his free time, Justin enjoys playing video games, reading, listening to music, and getting bubble tea.</p>
+        </div>
+        <div class="extras">
+            <section class="online">
+                <header>
+                    <p>online</p>
+                </header>
+                <a class="item" href="mailto:justin@bustinbung.com" aria-label="Email">
+                    <i class="fa-regular fa-envelope fa-2xl"></i>
+                </a>
+                <a class="item" href="https://instagram.com/bustinbung" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram fa-2xl"></i>
+                </a>
+                <a class="item" href="https://linkedin.com/in/bustinbung" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in fa-2xl"></i>
+                </a>
+                <a class="item" href="https://github.com/bustinbung" aria-label="GitHub">
+                    <i class="fa-brands fa-github fa-2xl"></i>
+                </a>
+                <a class="item" href="https://youtube.com/@bustinbung" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube fa-2xl"></i>
+                </a>
+                <a class="item" href="https://twitter.com/bustinbung" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter fa-2xl"></i> 
+                </a>
+                <a class="item" href="https://bsky.app/profile/bustinbung.bsky.social" aria-label="Bluesky">
+                    <i class="fa-brands fa-bluesky fa-2xl"></i>
+                </a>
+                <a class="item" href="https://letterboxd.com/bustinbung/" aria-label="Letterboxd">
+                    <i class="fa-brands fa-letterboxd fa-2xl"></i>
+                </a>
+                <div></div>
+            </section>
+            <section class="site">
+                <header>
+                    <p>site</p>
+                </header>
+                <div class="pad child-margin-fix">
+                    <p>Written in <a href="https://astro.build">Astro</a>.<br>
+                        Deployed by <a href="https://vercel.com">Vercel</a>.<br>
+                        <a href="https://github.com/bustinbung/bustinbung.com">Open-source.</a></p>
 
-    <style>
-        img[alt="Justin's headshot"] {
-            margin-right: 10px;
-            float: left;
+                    <p>v6.1.0</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</ContentPage>
+
+<style lang="scss">
+    .content {
+        align-items: normal;
+
+        & > div {
+            outline: var(--outline);
         }
-    
-        hr {
-            border-top: var(--border) !important;
+    }
+
+    img {
+        outline: var(--outline);
+    }
+
+    .online {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-flow: dense;
+        outline: var(--outline);
+        gap: 1px;
+
+        & > * {
+            outline: var(--outline);
         }
-    
-        hr:before {
-            content: none !important;
+
+        & > a, & > div {
+            aspect-ratio: 1 / 1;
         }
-        hr:after {
-            content: none !important;
+    }
+
+    .extras {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-color: var(--bg-color);
+        transition: all 0.5s ease;
+
+        & > * {
+            margin-block: 0;
         }
-    </style>
-</BaseLayout>
+
+        &::after {
+            content: "";
+            border-bottom: var(--outline);
+            border-right: var(--outline);
+            position: absolute;
+            bottom: calc(var(--global-padding) / 1.75);
+            right: calc(var(--global-padding) / 1.75);
+            height: calc(var(--global-padding) / 1.5);
+            width: calc(var(--global-padding) / 1.5);
+            transition: all 0.5s ease;
+        }
+
+        &:hover {
+            svg {
+                color: var(--bg-color);
+            }
+
+            &::after {
+                border-color: var(--bg-color);
+            }
+
+            color: var(--bg-color);
+            background-color: var(--fg-color);
+        }
+    }
+
+    header {
+        grid-column-start: span 3;
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        p {
+            font-family: var(--sans-serif-font);
+            font-weight: 450;
+            font-style: italic;
+            font-size: 2rem;
+            margin-block: 0;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+        }
+
+        .extras {
+            grid-column-start: span 2;
+        }
+
+        .online {
+            grid-template-columns: repeat(6, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .content {
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto;
+            height: 100%;
+        }
+
+        .extras {
+            grid-column-start: 3;
+        }
+
+        .online {
+            grid-template-columns: repeat(4, 1fr);
+
+            & > :nth-last-child(-n + 1) {
+                display: none;
+            }
+        
+            header {
+                padding-block: 0;
+            }
+        }
+
+        header {
+            grid-column-start: span 2;
+        }
+    }
+
+    @media (min-width: 1440px) {
+        .online {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+</style>

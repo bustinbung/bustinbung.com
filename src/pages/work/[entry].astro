@@ -1,0 +1,81 @@
+---
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+    const entries = await getCollection('work');
+
+    return entries.map((entry) => ({
+        params: { entry: entry.id.split("_")[1] },
+        props: { entry }
+    }))
+};
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+import ContentPage from '@layouts/ContentPage.astro';
+import Date from '@components/ui/Date.astro';
+import { Image } from 'astro:assets';
+---
+<ContentPage title={entry.data.title} header="work">
+    <header>
+        <h1>{entry.data.title}</h1>
+        <Date date={entry.data.date} formatString="yyyy/MM" />
+    </header>
+    <div class="content">
+        <div class="thumbnail">
+            <a href={entry.data.outboundLink}>
+                <Image src={entry.data.thumbnail} alt={entry.data.title} />
+            </a>
+        </div>
+        <div class="content-text pad child-margin-fix">
+            <Content />
+        </div>
+    </div>
+</ContentPage>
+
+<style lang="scss">
+    header {
+        h1 {
+            font-family: var(--serif-font);
+            font-size: 1.6rem;
+            font-style: italic;
+            font-weight: normal;
+        }
+    }
+
+    .thumbnail { 
+        display: flex;
+
+        img {
+            outline: var(--outline);
+        }
+    }
+
+    @media (min-width: 768px) {
+        .content-text {
+            max-width: 25rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .content {
+            flex-direction: row-reverse;
+            align-items: flex-start;
+            height: 100%;
+        }
+
+        .content-text {
+            outline: var(--outline);
+            width: 50%;
+            height: 100%;
+            max-width: revert;
+        }
+
+        .thumbnail {
+            position: sticky;
+            top: 0;
+            max-width: 50%;
+        }
+    }
+</style>
