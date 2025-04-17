@@ -3,6 +3,7 @@ title: "Pages of Vermillion"
 date: 2024-11
 roles: ["Producer", "1st AD", "Editor"]
 thumbnail: "../../assets/img/work/thumb/pages-of-vermillion.jpg"
+outboundLink: "https://www.youtube.com/watch?v=nWovUds2rZQ"
 ---
 An up-and-coming murder mystery novelist, haunted by the death of her twin sister, can no longer distinguish between reality and delusion-as bodies pile up, a live interview about her upcoming memoir forces her to confront the chilling possibility that her hallucinatory inspiration may be terrifyingly real.
 

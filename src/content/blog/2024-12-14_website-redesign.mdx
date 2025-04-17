@@ -2,7 +2,6 @@
 title: "v6 Redesign"
 description: "How I designed and developed a brand new version of my website."
 date: 2024-12-14
-isDraft: true
 ---
 import Figure from '@components/ui/Figure.astro';
 
@@ -93,7 +92,7 @@ import design_versions from '../../assets/img/blog/redesign/design-versions.webp
     alt="An animated image showing the progress of the design over time."
     caption="Design over time" />
 
-All in all, the total design process took about 20 days.
+All in all, the total design process took about 20 days. You should be able to see the influences of swiss style design in the final result (hopefully).
 
 ## Development
 
@@ -223,7 +222,11 @@ import ContentPage from "@layouts/ContentPage.astro";
 
 You'll notice that there are very few absolute sizing units present. For the most part, sizes are set using `rem` or by calculating against the `global-padding` CSS variable (which is itself set using `rem`). This means that when creating styles, it's easy to adjust the "scale" of the site by setting `font-size` on `html` (thereby changing the values for `rem`).
 
+## Wrapping Up
 
+After doing some final quality control checks, testing on multiple devices, and giving everything a once-over for spelling and grammar, the site was ready to deploy. Fortunately, I had been using Vercel to deploy my website, so it was as simple as creating a pull request to `main` and merging in the work I'd done.
+
+I'm really pleased with the result, and the design is also simple enough at its core that I've been able to apply the same visual elements and cues to other things like my resume and business card.
 
 ---
 
