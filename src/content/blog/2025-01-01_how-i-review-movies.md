@@ -2,7 +2,6 @@
 title: "How I Review Things (but mostly movies)"
 description: "An explanation of my personal rating system, inspired by Josh George."
 date: 2025-01-01
-isDraft: true
 ---
 ## The Problem
 
