@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.2.4",
+    "@astrojs/mdx": "^4.2.6",
     "@date-fns/tz": "^1.2.0",
     "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.7.2",
+    "astro": "^5.7.12",
     "date-fns": "^4.1.0",
     "modern-normalize": "^3.0.1",
-    "sass": "^1.86.3",
+    "sass": "^1.88.0",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
