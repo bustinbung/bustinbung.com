@@ -12,19 +12,27 @@ import '@styles/index.scss';
 const { title } = Astro.props;
 const isProd = import.meta.env.PROD;
 ---
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="generator" content={Astro.generator} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content="{Astro.generator}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Justin Jung</title>
 
-    <script src="https://kit.fontawesome.com/578016c09a.js" crossorigin="anonymous" is:inline></script>
-    {isProd && <Analytics domainCode="bustinbung"/>}
-</head>
-<body>
+    <script
+      src="https://kit.fontawesome.com/578016c09a.js"
+      crossorigin="anonymous"
+      is:inline
+    ></script>
+    {isProd &&
+    <Analytics domainCode="bustinbung" />
+    }
+  </head>
+  <body>
     <slot />
     {isProd && <SpeedInsights />}
-</body>
+  </body>
 </html>
