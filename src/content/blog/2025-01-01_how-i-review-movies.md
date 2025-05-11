@@ -1,35 +1,50 @@
 ---
-title: "How I Review Movies"
-description: "An explanation of my rating system for movies, based on Josh George's system."
+title: "How I Review Things (but mostly movies)"
+description: "An explanation of my personal rating system, inspired by Josh George."
 date: 2025-01-01
 isDraft: true
 ---
 ## The Problem
 
-I haven't watched many movies.
+Reviewing things is hard. This is especially true for art, which is subjective by nature. Questions like "what makes good art" and "why do you like this art" are hard to answer in a satisfying way, especially when the answer is something like "it made me feel good".
 
-Well, I haven't watched many "classic" movies. Chances are, if it's a film from the last 200 years that wasn't released for kids in the 2000s or 2010s, I probably haven't seen it. As an aspiring media professional, that's a bit embarassing. So! In order to expand my movie palate, I've made the goal of watching a new movie every week this year (we'll see how long this holds up).
+I started using [Letterboxd](https://letterboxd.com) recently to keep track of the movies I've watched, but I've been having trouble putting into perspective what it means exactly for a movie to be a "6" or a "1". I wanted to avoid the "IGN problem," where everything's a 7 unless it's really good or really bad, because I think that prevents the scores from having any real meaning or nuance. It's similar to the American A-F grading scale, where anything below 70 is failing, so scores get crushed towards the top—the difference between a 100 and a 90 feels much bigger than 0 and 10—and we lose a lot of granularity.
 
-I wanted to use [Letterboxd](https://letterboxd.com) to track what I've watched, when I watched it, and what I thought of it. The first two are easy, but the last one scares me a bit. Because of my limited experience watching movies, I don't really know how to rate things. Letterboxd gives you a scale out of 5.
+## The Solution
+
+This was when I saw Josh George's video, "IGN's review scale makes no sense." In it, he argues that IGN's process of rating everything a 7 ([well-intentioned or not](https://www.ign.com/articles/another-7-ign-why-so-many-games-score-7-and-above)), decreases the insight that reviews and ratings give into an individual reviewer's preferences and character. I highly suggest you watch his video, as it was well thought out and he includes some personal examples that illustrate his point.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/s0h_1uvqi5E?si=tVVBaFb4zisMFRFQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## The System
+### The System
 
-Because of Letterboxd's 5 star rating system, 1 point is the equivalent of 0.5 stars (i.e., a 5 is 2.5 stars).
+Based on Josh's video and [this](https://www.youtube.com/watch?v=s0h_1uvqi5E&lc=Ugx9bNiDf_lhB7MxcLZ4AaABAg) YouTube comment, I've come up with my own scale, which I've described briefly below.
 
 | Score | Meaning |
-| -----: | -------|
-| 0 | I would pay money for this to not exist. |
-| 1 | You should be paid money to watch this. |
-| 2 | I will complain about this in detail. |
-| 3 | I will tell you not to watch this. |
-| 4 | You don't have a reason to see this. |
-| 5 | I would not be upset if you watched this. |
-| 6 | It's worth the time, but I'm not recommending it. |
-| 7 | If you're asking, I'll recommend it. |
-| 8 | I will go out of my way to recommend this. |
-| 9 | I think everyone should watch this. |
-| 10 | This will change your life. |
+| ----- | ------- |
+| ☆☆☆☆☆ | I would pay money for this to not exist. |
+| ⯪☆☆☆☆ | You should be paid money to watch this. |
+| ★☆☆☆☆ | I will complain about this in detail. |
+| ★⯪☆☆☆ | I will tell you not to watch this. |
+| ★★☆☆☆ | You don't have a reason to see this. |
+| ★★⯪☆☆ | I would not be upset if you watched this. |
+| ★★★☆☆ | It's worth the time, but I'm not recommending it. |
+| ★★★⯪☆ | If you're asking, I'll recommend it. |
+| ★★★★☆ | I will go out of my way to recommend this. |
+| ★★★★⯪ | I think everyone should watch this. |
+| ★★★★★ | This will change your life. |
 
-Final text.
+Unfortunately, I can't rate a movie a 0, so if I ever need to rate something a 0, I'll leave a 0.5 star review with a note that I would give it a 0.
+
+If you'd like to see the scale in action, check out [my Letterboxd page](https://letterboxd.com/bustinbung/) (@bustinbung).
+
+## Wrapping Up
+
+I've been using this system to great personal success. It's given me a good benchmark for how I rank movies, but has now extended beyond movies to other things like food and music. ■
+
+<style>
+    /* This sucks, I know. */
+    table tbody tr :first-child {
+        font-family: "Noto Sans Symbols 2";
+    }
+</style>
