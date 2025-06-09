@@ -1,7 +1,7 @@
 {
   "name": "",
   "type": "module",
-  "version": "6.2.2",
+  "version": "6.2.3",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.2.6",
+    "@astrojs/mdx": "^4.3.0",
     "@date-fns/tz": "^1.2.0",
     "@vercel/speed-insights": "^1.2.0",
-    "astro": "^5.7.12",
+    "astro": "^5.9.2",
     "date-fns": "^4.1.0",
     "modern-normalize": "^3.0.1",
-    "sass": "^1.88.0",
+    "sass": "^1.89.2",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
