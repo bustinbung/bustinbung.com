@@ -1,10 +1,6 @@
 ---
-interface Props {
-	domainCode: string
-}
-
-const { domainCode } = Astro.props;
+import VercelAnalytics from '@vercel/analytics/astro';
 ---
 
-<!-- Goatcounter Analytics -->
-<script data-goatcounter=`https://${domainCode}.goatcounter.com/count` async src="//gc.zgo.at/count.js" is:inline></script>
+<!-- Vercel Analytics -->
+<VercelAnalytics />
