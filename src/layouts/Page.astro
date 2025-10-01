@@ -4,7 +4,6 @@ interface Props {
 }
 
 import Analytics from '@components/helper/Analytics.astro';
-import SpeedInsights from "@vercel/speed-insights/astro";
 
 import 'modern-normalize/modern-normalize.css';
 import '@styles/index.scss';
@@ -33,6 +32,5 @@ const isProd = import.meta.env.PROD;
   </head>
   <body>
     <slot />
-    {isProd && <SpeedInsights />}
   </body>
 </html>
