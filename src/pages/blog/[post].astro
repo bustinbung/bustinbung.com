@@ -30,7 +30,7 @@ import Date from '@components/ui/Date.astro';
     </div>
 </ContentPage>
 
-<script lang="ts">
+<script is:inline>
     navigation.addEventListener('navigate', (event) => {
         if (event.destination.sameDocument != true) {
             return;
