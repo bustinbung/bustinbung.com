@@ -36,11 +36,15 @@ import Date from '@components/ui/Date.astro';
             return;
         }
 
-        if (!event.destination.url.includes('fnref')) {
+        let highlightElement;
+        if (event.destination.url.includes('fnref')) {
+            highlightElement = document.querySelector(`#${event.destination.url.split("#")[1]}`).parentElement.parentElement;
+        } else if (event.destination.url.includes('user-content-fn')) {
+            highlightElement = document.querySelector(`#${event.destination.url.split("#")[1]}`);
+        } else {
             return;
         }
 
-        const highlightElement = document.querySelector(`#${event.destination.url.split("#")[1]}`).parentElement.parentElement;
         highlightElement.classList.add('highlight');
         setTimeout(continueHighlight, 1000, highlightElement);
     })

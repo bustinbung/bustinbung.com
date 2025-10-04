@@ -1,7 +1,7 @@
 {
   "name": "bustinbung.com",
   "type": "module",
-  "version": "6.2.5",
+  "version": "6.3.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
