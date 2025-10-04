@@ -36,7 +36,7 @@ import Date from '@components/ui/Date.astro';
             return;
         }
 
-        let highlightElement: Element;
+        let highlightElement;
         if (event.destination.url.includes('fnref')) {
             highlightElement = document.querySelector(`#${event.destination.url.split("#")[1]}`).parentElement.parentElement;
         } else if (event.destination.url.includes('user-content-fn')) {
