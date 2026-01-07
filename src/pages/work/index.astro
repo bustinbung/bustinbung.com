@@ -24,7 +24,7 @@ entries.sort((a, b) => {
 <ContentPage title="Work">
     <div class="content">
         {entries.map((entry) => (
-            <div class="entry" id={entry.id}>
+            <div class={entry.data.isDraft ? "draft entry" : "entry"} id={entry.id}>
                 <Image src={entry.data.thumbnail} alt={entry.data.title} />
                 <dialog>
                     <div class="dialog-content">
@@ -87,6 +87,18 @@ entries.sort((a, b) => {
     .entry {
         display: flex;
         position: relative;
+    }
+
+    .draft::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: red;
+        opacity: 0.25;
     }
 
     img {

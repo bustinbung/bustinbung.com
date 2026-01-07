@@ -1,0 +1,38 @@
+---
+title: "Building & Configuring a Homelab"
+description: "Migrating away from cloud storage providers is easier than you think!"
+date: 2025-10-13
+isDraft: true
+---
+import Figure from "@components/ui/Figure.astro";
+
+## Introduction
+
+I started getting serious about online privacy and security in 2018 when my account with [Dubsmash](https://en.wikipedia.org/wiki/Dubsmash) was [compromised](https://www.theregister.com/2019/02/11/620_million_hacked_accounts_dark_web/), along with 162 million other accounts. As a 14 year-old (and even now), this was really scary---someone on the internet could have access to my full name, location, and phone number, enough information to identify me individually.
+
+Since then, I've taken some measures to harden up on the internet, including using long, randomly generated passwords stored in [1Password](https://1password.com), using email aliases through [SimpleLogin](https://simplelogin.io), and enabling 2FA and passkeys on all the accounts that support it.
+
+While my accounts got more secure, I never really considered data privacy important to me until some articles came out claiming that Google was using documents available on Google Drive to train its generative AI models (this has since been proven [misleading](https://www.businessinsider.com/google-docs-publicly-available-ai-training-settings-private-shared-2024-4)).[^1] In addition, as my archive of projects gets larger in both size and scope, I needed more and more space to hold all that data.
+
+## Initial Solutions
+
+Before my current homelab setup, I ran a VPS (virtual private server) through Oracle, which offers a generous [free tier](https://www.oracle.com/cloud/free/). Running on Ubuntu Server, I set up a Docker instance which hosted a number of services, including Nextcloud, a mailserver, a couple of Minecraft servers, and a DaVinci Resolve PostgreSQL database.
+
+This worked great for my needs at the time. The server had plenty of resources to run everything I needed, and I never had issues with downtime or outages that weren't a result of my poor server management.
+
+import oracle_vps_util from "@assets/img/blog/homelab/oracle-vps-util.png";
+
+<Figure
+    src={oracle_vps_util}
+    alt="A chart showing CPU and memory utilization for the Oracle VPS. Memory usage stays around 45% and CPU usages stays around 2%."
+    caption="CPU (in orange) and memory (in blue) utilization." />
+
+However, the free tier caps at 200GB of storage, so while it was enough to back up my photos and videos, it definitely wasn't enough to archive any of my projects.
+
+## The Homelab Dream
+
+
+
+---
+
+[^1]: I probably wouldn't keep sensitive documents or other private information on Google Drive anyways. See: https://www.techradar.com/pro/security/gemini-ai-platform-caught-scanning-google-drive-files-without-user-permission

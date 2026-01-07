@@ -20,4 +20,4 @@ Producer: Katie Ree
 
 Director of Photography: Lily Blumenthal
 
-1st AC, Assistand Editor: Justin Jung
+1st AC, Assistant Editor: Justin Jung
