@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from 'astro/loaders';
 
 const work = defineCollection({
@@ -11,7 +12,7 @@ const work = defineCollection({
         roles: z.array(z.string()),
         date: z.coerce.date(),
         updateDate: z.coerce.date().optional(),
-        outboundLink: z.string().url().optional(),
+        outboundLink: z.url().optional(),
         thumbnail: image(),
         isDraft: z.boolean().optional().default(false),
     })
