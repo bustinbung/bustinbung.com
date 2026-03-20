@@ -1,16 +1,13 @@
-@use 'font/PPNeueMontreal';
-@use 'font/PPWriter';
-@use 'font/PPNeueMontrealMono.css';
 @use 'font/NotoSansSymbols2.css';
 
 :root {
     --global-padding: 1.2rem;
     --outline: 1px solid black;
-    --sans-serif-font: 'PP Neue Montreal', sans-serif;
+    --sans-serif-font: var(--font-neue-montreal), sans-serif;
     --sans-serif-weight: 700;
-    --serif-font: 'PP Writer', serif;
+    --serif-font: var(--font-writer), serif;
     --serif-weight: 345;
-    --mono-font: 'PP Neue Montreal Mono', monospace;
+    --mono-font: var(--font-neue-montreal-mono), monospace;
     --mono-weight: 450;
 
     --offwhite: #faf9f6;

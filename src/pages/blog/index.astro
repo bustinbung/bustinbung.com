@@ -21,7 +21,7 @@ posts.sort((a, b) => {
             <div class="post" id={post.id}>
                 <div class="post-details">
                     <header>
-                        <a href={`/blog/${post.id.split("_")[1]}`}>
+                        <a href={`/blog/${post.id.split("-")[1]}`}>
                             <h2>{post.data.title}</h2>
                         </a>
                         {post.data.updateDate ? 
@@ -31,7 +31,7 @@ posts.sort((a, b) => {
                     <p class="description">{post.data.description}</p>
                 </div>
                 <div class="arrow">
-                    <a href={`/blog/${post.id.split("_")[1]}`} aria-label="Read more">
+                    <a href={`/blog/${post.id.split("-")[1]}`} aria-label="Read more">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="0" y1="24" x2="24" y2="24"></line><line x1="24" y1="0" x2="24" y2="24"></line><line x1="24" y1="24" x2="0" y2="0" stroke-width="1"></line></svg>
                     </a>
                 </div>
