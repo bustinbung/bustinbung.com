@@ -4,6 +4,7 @@ interface Props {
 }
 
 import Analytics from '@components/helper/Analytics.astro';
+import { Font } from 'astro:assets';
 
 import 'modern-normalize/modern-normalize.css';
 import '@styles/index.scss';
@@ -21,14 +22,15 @@ const isProd = import.meta.env.PROD;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | Justin Jung</title>
 
+    <Font cssVariable='--font-neue-montreal'/>
+    <Font cssVariable='--font-neue-montreal-mono'/>
+    <Font cssVariable='--font-writer'/>
     <script
       src="https://kit.fontawesome.com/578016c09a.js"
       crossorigin="anonymous"
       is:inline
     ></script>
-    {isProd &&
-    <Analytics/>
-    }
+    {isProd && <Analytics/>}
   </head>
   <body>
     <slot />
