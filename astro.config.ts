@@ -53,6 +53,7 @@ export default defineConfig({
 			provider: fontProviders.local(),
 			name: "PP Neue Montreal Mono",
 			cssVariable: "--font-neue-montreal-mono",
+			fallbacks: ["monospace"],
 			options: {
 				variants: [
 					{
@@ -89,6 +90,7 @@ export default defineConfig({
 			provider: fontProviders.local(),
 			name: "PP Writer",
 			cssVariable: "--font-writer",
+			fallbacks: ["serif"],
 			options: {
 				variants: [
 					{
