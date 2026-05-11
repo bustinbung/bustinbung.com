@@ -24,9 +24,13 @@ import { Image } from 'astro:assets';
     </header>
     <div class="content">
         <div class="thumbnail">
+            {entry.data.outboundLink ?
             <a href={entry.data.outboundLink}>
-                <Image src={entry.data.thumbnail} alt={entry.data.title} />
+                <Image src={entry.data.thumbnail} alt={entry.data.title} loading="eager" />
             </a>
+            :
+            <Image src={entry.data.thumbnail} alt={entry.data.title} loading="eager" />
+            }
         </div>
         <div class="content-text pad child-margin-fix">
             <Content />
