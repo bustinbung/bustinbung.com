@@ -13,3 +13,5 @@ Writer, Director: Meghan Jacobs
 Producer: Katie Ree
 
 Director of Photography: Rebecca Levy
+
+Lead Editor: Justin Jung
