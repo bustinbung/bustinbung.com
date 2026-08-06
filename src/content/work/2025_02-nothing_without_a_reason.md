@@ -21,5 +21,5 @@ Director of Photography: Muhammad Yaruq Faisal
 ![A collection of Polaroids of the cast and crew.](../../assets/img/work/nwar/nwar-bts1.jpg)
 *The cast and crew.*
 
-![A collection of Polaroids of the cast and crew.](../../assets/img/work/nwar/nwar-bts2.jpg)
+![The crew looks at a camera being held on a ladder.](../../assets/img/work/nwar/nwar-bts2.jpg)
 *Setting up one of the shots.*
