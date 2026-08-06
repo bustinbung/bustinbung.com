@@ -2,9 +2,7 @@
 import Page from "@layouts/Page.astro";
 import NavbarDesktop from "@components/ui/NavbarDesktop.astro";
 import Navbar from "@components/ui/Navbar.astro";
-import Video from "@components/ui/Video.astro";
-
-import reelThumb from "@assets/video/justin_jung-reel-2025_thumb.jpg";
+import { MuxPlayer } from "@mux/mux-player-astro";
 ---
 <Page title="Home">
     <div class="page">
@@ -12,10 +10,14 @@ import reelThumb from "@assets/video/justin_jung-reel-2025_thumb.jpg";
             <div class="content">
                 <header>
                     <h1>hi, i’m justin.</h1>
-                    <p>student. filmmaker.<br>developer. musician.</p>
+                    <p>filmmaker. developer. musician.</p>
                 </header>
                 <div class="reel">
-                    <Video mp4Source="https://lfzryp2xeu6xhksn.public.blob.vercel-storage.com/jung_justin-reel-2025.v2.mp4" thumbnail={reelThumb.src}/>
+                    <MuxPlayer
+                        playbackId="DU7FOe2uAuRMsJtWh7DbsZO00CJupjPnhhB6nKH4FNLM"
+                        metadata={{ video_title: "Justin Jung Reel - 2025" }}
+                        poster="https://image.mux.com/DU7FOe2uAuRMsJtWh7DbsZO00CJupjPnhhB6nKH4FNLM/thumbnail.png?&time=4"
+                    />
                 </div>
             </div>
         </main>
@@ -38,6 +40,7 @@ import reelThumb from "@assets/video/justin_jung-reel-2025_thumb.jpg";
     .content {
         justify-content: center;
         align-items: normal;
+        width: 100%;
     }
 
     header {
