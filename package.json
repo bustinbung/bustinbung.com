@@ -10,13 +10,13 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/mdx": "^7.0.5",
     "@date-fns/tz": "^1.4.1",
     "@types/dom-navigation": "^1.0.7",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^6.3.1",
+    "astro": "^7.2.0",
     "date-fns": "^4.1.0",
     "modern-normalize": "^3.0.1",
     "sass": "^1.99.0",
