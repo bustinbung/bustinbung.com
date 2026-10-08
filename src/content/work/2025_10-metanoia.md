@@ -6,6 +6,8 @@ thumbnail: "../../assets/img/work/thumb/metanoia.jpg"
 ---
 > Status: In post-production
 
+An [official selection](https://athensfilm.com/films/metanoia) of the 2026 [Athens Film Festival](https://athensfilm.com/)!
+
 ## Personnel
 
 Writer, Director: Anela Leide
